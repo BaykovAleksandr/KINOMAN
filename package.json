@@ -18,5 +18,8 @@
   },
   "engines": {
     "node": "16"
+  },
+  "dependencies": {
+    "Babel": "^0.0.1"
   }
 }
