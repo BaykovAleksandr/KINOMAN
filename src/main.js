@@ -2,7 +2,7 @@
 import BoardPresenter from './presenters/film-presenter.js';
 import {render} from './render.js';
 import FiltersView from './views/filters-view.js';
-import UsersRankView from './views/users-rang-view.js';
+import UsersRankView from './views/header-profile-view.js';
 const siteMainElement = document.querySelector('.main');
 const siteHeaderElement = document.querySelector('.header');
 

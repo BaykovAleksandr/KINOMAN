@@ -1,6 +1,6 @@
 import {render} from '../render.js';
 import FiltersView from '../views/filters-view.js';
-import UsersRankView from '../views/users-rang-view.js';
+import UsersRankView from '../views/header-profile-view.js';
 
 export default class BoardPresenter {
   boardComponent = new FiltersView();
