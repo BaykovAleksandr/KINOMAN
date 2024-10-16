@@ -12,6 +12,7 @@ export default class BoardPresenter {
     this.boardContainer = boardContainer;
 
     render(this.headerComponent, this.boardContainer);
+    render(new FiltersView(), this.mainComponent);
 
 
     // render(new FiltersView(), siteMainElement);
