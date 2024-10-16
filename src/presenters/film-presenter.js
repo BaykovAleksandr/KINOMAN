@@ -1,27 +1,33 @@
-import {render, RenderPosition} from '../render.js';
-import FilmsNavigationView from '../views/film-navigation-view.js';
+import {render} from '../render.js';
 import FiltersView from '../views/filters-view.js';
-import FooterStatisticView from '../views/footer-statistic-view.js';
-import UsersRankView from '../views/header-profile-view.js';
-import ListView from '../views/film-list-view.js';
+import FilmsView from '../views/films-view.js';
+import FilmListView from '../views/film-list-view.js';
+import FilmListContainerView from '../views/film-list-container-view.js';
+import FilmMoreButtonView from '../views/film-more-button-view.js';
+import FilmCardView from '../views/film-card-view.js';
+import FilmDetailsView from '../views/film-details-view.js';
 
-export default class BoardPresenter {
-  mainComponent = new FiltersView();
-  headerComponent = new UsersRankView();
-  footerComponent = new FooterStatisticView();
+export default class FilmsPresenter {
+  filterComponent = new FiltersView();
+  filmsComponent = new FilmsView();
+  filmListComponent = new FilmListView();
+  filmListContainerComponent = new FilmListContainerView();
+  filmButtonMoreComponent = new FilmMoreButtonView();
 
-  init = (boardContainer) => {
-    this.boardContainer = boardContainer;
+  init = (container) => {
+    this.container = container;
 
-    //render(this.headerComponent, this.boardContainer);
-    render(this.mainComponent, this.boardContainer);
-    render(new FilmsNavigationView(), this.mainComponent.getElement(), RenderPosition.BEFOREBEGIN);
-    render(new ListView(), this.mainComponent.getElement());
+    render(this.filterComponent, this.container);
+    render(this.filmsComponent, this.container);
+    render(this.filmListComponent, this.filmsComponent.getElement());
+    render (this.filmListContainerComponent, this.filmListComponent.getElement());
+    for (let i = 0; i < 5; i++) {
+      render(new FilmCardView(), this.filmListContainerComponent.getElement());
+    }
 
-    // render(new FiltersView(), siteMainElement);
-    // render(new UsersRankView(), siteHeaderElement);
-    // render(new ListView(), siteMainElement);
-    // render(new FooterStatisticView(), siteFooterElememt);
-    // render(new FilmsNavigationView(), siteMainElement, RenderPosition.BEFOREBEGIN);
+    render(this.filmButtonMoreComponent, this.filmListComponent.getElement());
+
+    //render(new FilmDetailsView(), this.container.parentElement);
+
   };
 }
