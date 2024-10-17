@@ -1,10 +1,14 @@
 import {createElement} from '../render.js';
-//import {createFilmCardInfoTemplate} from '../film-card-info-template.js';
-//import {createFilmCardControlsTemplate} from '../film-card-controls-template.js';
+import {createFilmCardInfoTemplate} from './film-card-info-template.js';
+import {createFilmCardControlsTemplate} from './film-card-controls-template.js';
 
 const createFilmCardTemplate = () =>
   `
     <article class="film-card">
+
+      ${createFilmCardInfoTemplate()}
+
+      ${createFilmCardControlsTemplate()}
 
     </article>
   `;

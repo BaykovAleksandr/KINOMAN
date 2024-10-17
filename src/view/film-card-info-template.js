@@ -1,6 +1,6 @@
-import {createElement} from '../render.js';
-const createFilmCardInfoTemplate = () => `
-<a class="film-card__link">
+export const createFilmCardInfoTemplate = () =>
+  `
+    <a class="film-card__link">
       <h3 class="film-card__title">The Dance of Life</h3>
       <p class="film-card__rating">8.3</p>
       <p class="film-card__info">
@@ -12,22 +12,4 @@ const createFilmCardInfoTemplate = () => `
       <p class="film-card__description">Burlesque comic Ralph "Skid" Johnson (Skelly), and specialty dancer Bonny Lee King (Carroll), end up together on a cold, rainy night at a tr…</p>
       <span class="film-card__comments">5 comments</span>
     </a>
-`;
-
-export default class FilmCardInfoView {
-
-  getTemplate() {
-    return createFilmCardInfoTemplate();
-  }
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
-  }
-}
+  `;

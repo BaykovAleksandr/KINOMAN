@@ -1,20 +1,22 @@
 
-import FilmsPresenter from './presenters/film-presenter.js';
-import {render, RenderPosition} from './render.js';
-import FooterStatisticView from './views/footer-statistic-view.js';
-import UsersRankView from './views/header-profile-view.js';
-const siteMainElement = document.querySelector('.main');
-const siteHeaderElement = document.querySelector('.header');
-const siteFooterElememt = document.querySelector('.footer');
+import HeaderProfileView from './view/header-profile-view.js';
+import FilterView from './view/filter-view.js';
+import FooterStatisticView from './view/footer-statistics-view.js';
 
+import FilmsPresenter from './presenters/film-presenter.js';
+
+import {render} from './render.js';
+
+const bodyElement = document.querySelector('body');
+const siteHeaderElement = bodyElement.querySelector('.header');
+const siteMainElement = bodyElement.querySelector('.main');
+const siteFooterElement = bodyElement.querySelector('.footer');
+const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
 
 const filmsPresenter = new FilmsPresenter();
+
+render(new HeaderProfileView(), siteHeaderElement);
+render(new FilterView(), siteMainElement);
+render(new FooterStatisticView(), siteFooterStatisticsElement);
+
 filmsPresenter.init(siteMainElement);
-
-render(new UsersRankView(), siteHeaderElement);
-
-
-
-render(new FooterStatisticView(), siteFooterElememt);
-
-

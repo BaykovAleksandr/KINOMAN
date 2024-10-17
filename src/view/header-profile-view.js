@@ -1,5 +1,8 @@
 import {createElement} from '../render.js';
-const createUserRankTemplate = () => `<section class="header__profile profile">
+
+const createHeaderProfileTemplate = () =>
+  `
+    <section class="header__profile profile">
       <p class="profile__rating">Movie Buff</p>
       <img
         class="profile__avatar"
@@ -8,18 +11,19 @@ const createUserRankTemplate = () => `<section class="header__profile profile">
         width="35"
         height="35"
       >
-    </section>`;
+    </section>
+  `;
 
-export default class UsersRankView {
-
+export default class HeaderProfileView {
   getTemplate() {
-    return createUserRankTemplate();
+    return createHeaderProfileTemplate();
   }
 
   getElement() {
     if (!this.element) {
       this.element = createElement(this.getTemplate());
     }
+
     return this.element;
   }
 
