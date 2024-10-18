@@ -47,19 +47,22 @@ const generateFilms = () => {
   let totalCommentsCount = 0;
 
   return films.map((film, index) => {
-    const filmCommentsCount = getRandomNumber(1, 30);
+    const hasComments = getRandomNumber(0, 1);
+    const filmCommentsCount = (hasComments)
+      ? getRandomNumber(1, 30)
+      : 0;
 
     totalCommentsCount += filmCommentsCount;
 
     return {
       id: String(index + 1),
-      comments: Array.from(
-        {length: filmCommentsCount},
-        (_value, commentIndex) => String(totalCommentsCount - commentIndex)
-      ),
+      comments: (hasComments)
+        ? Array.from(
+          {length: filmCommentsCount},
+          (_value, commentIndex) => String(totalCommentsCount - commentIndex)
+        )
+        : [],
       filmInfo: film,
     };
   });
 };
-
-
