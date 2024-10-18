@@ -41,4 +41,25 @@ const generateFilm = () => ({
   description: descriptions[getRandomNumber(0, descriptions.length)]
 });
 
+const generateFilms = () => {
+  const films = Array.from({length: titles.length}, generateFilm);
+
+  let totalCommentsCount = 0;
+
+  return films.map((film, index) => {
+    const filmCommentsCount = getRandomNumber(1, 30);
+
+    totalCommentsCount += filmCommentsCount;
+
+    return {
+      id: String(index + 1),
+      comments: Array.from(
+        {length: filmCommentsCount},
+        (_value, commentIndex) => String(totalCommentsCount - commentIndex)
+      ),
+      filmInfo: film,
+    };
+  });
+};
+
 
