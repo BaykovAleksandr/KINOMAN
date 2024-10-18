@@ -3,4 +3,6 @@ export const getRandomNumber = (minimum, maximum)  =>
 
 export const getRandomValue = (items) => items[Math.floor(Math.random() * items.length)];
 
+export const getRandomFloat = (min, max) =>
+  Math.random() * (max - min) + min;
 
