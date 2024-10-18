@@ -43,7 +43,7 @@ const generateFilm = () => ({
   description: descriptions[getRandomNumber(0, descriptions.length)]
 });
 
-const generateFilms = () => {
+export const generateFilms = () => {
   const films = Array.from({length: titles.length}, generateFilm);
 
   let totalCommentsCount = 0;

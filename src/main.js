@@ -18,3 +18,8 @@ render(new FilterView(), siteMainElement);
 render(new FooterStatisticView(), siteFooterStatisticsElement);
 
 filmsPresenter.init(siteMainElement);
+
+import {generateFilms} from './mock/film';
+const films = generateFilms();
+// eslint-disable-next-line no-console
+console.log(films);
