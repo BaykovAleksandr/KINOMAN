@@ -18,7 +18,7 @@
   "devDependencies": {
     "@babel/core": "7.25.8",
     "@babel/preset-env": "7.25.8",
-    "babel-loader":"9.2.1",
+    "babel-loader": "9.2.1",
     "copy-webpack-plugin": "^12.0.2",
     "eslint": "8.13.0",
     "eslint-config-htmlacademy": "5.1.2",
@@ -33,6 +33,7 @@
     "@babel/core": "^7.25.8",
     "@babel/preset-env": "^7.25.8",
     "Babel": "^0.0.1",
-    "babel-loader": "^9.2.1"
+    "babel-loader": "^9.2.1",
+    "dayjs": "^1.11.13"
   }
 }
