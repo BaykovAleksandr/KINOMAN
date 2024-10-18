@@ -1,6 +1,7 @@
 import { getRandomValue } from '../utils.js';
 import { getRandomNumber } from '../utils.js';
 import { getRandomFloat } from '../utils.js';
+import { humanizeTaskDueDate } from '../utils.js';
 
 const titles = [
   'Country On Him',
@@ -15,6 +16,7 @@ const titles = [
 const genres = ['kriminal', 'erotic', 'musicl', 'western', 'fantasy', 'action', 'comedy', 'advanture'];
 
 const descriptions = ['Oscar-winning film', 'A war drama about two young people', 'From the creators of timeless classic', 'Nu, Pogodi!', 'And', 'Alice in Wonderland', 'With the best fight scenes since Bruce Lee.'];
+
 
 const generateFilm = () => ({
 
@@ -31,10 +33,10 @@ const generateFilm = () => ({
     'Morgan Freeman'
   ],
   release: {
-    date: '2019-05-11T00:00:00.000Z',
+    date: humanizeTaskDueDate('2019-05-11T00:00:00.000Z'),
     releaseCountry: 'Finland'
   },
-  runtime: getRandomNumber(70, 181),
+  runtime: getRandomNumber(60, 181),
   genre: [
     'Comedy'
   ],
