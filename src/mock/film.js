@@ -38,7 +38,7 @@ const generateFilm = () => ({
   },
   runtime: getRandomNumber(60, 181),
   genre: [
-    'Comedy'
+    genres[getRandomNumber(0, genres.length)]
   ],
   description: descriptions[getRandomNumber(0, descriptions.length)]
 });
