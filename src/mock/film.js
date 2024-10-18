@@ -20,7 +20,7 @@ const descriptions = ['Oscar-winning film', 'A war drama about two young people'
 
 const generateFilm = () => ({
 
-  title: getRandomValue(titles),
+  title: titles[getRandomValue(0, titles.length)],
   alternativeTitle: 'Laziness Who Sold Themselves',
   totalRating: getRandomFloat(0, 10),
   poster: 'images/posters/blue-blazes.jpg',
