@@ -20,9 +20,9 @@ const descriptions = ['Oscar-winning film', 'A war drama about two young people'
 
 const generateFilm = () => ({
 
-  title: titles[getRandomValue(0, titles.length)],
+  title: getRandomValue(titles),
   alternativeTitle: 'Laziness Who Sold Themselves',
-  totalRating: getRandomFloat(0, 10),
+  totalRating: Math.round(getRandomFloat(0, 10),1),
   poster: 'images/posters/blue-blazes.jpg',
   ageRating: getRandomNumber(0, 19),
   director: 'Tom Ford',
@@ -38,8 +38,8 @@ const generateFilm = () => ({
   },
   runtime: getRandomNumber(60, 181),
   genre: [
-    genres[getRandomNumber(0, genres.length)]
-  ],
+    getRandomValue(genres)]
+  ,
   description: descriptions[getRandomNumber(0, descriptions.length)]
 });
 
