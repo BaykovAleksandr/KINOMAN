@@ -2,9 +2,7 @@
 import HeaderProfileView from './view/header-profile-view.js';
 import FilterView from './view/filter-view.js';
 import FooterStatisticView from './view/footer-statistics-view.js';
-
 import FilmsPresenter from './presenters/film-presenter.js';
-
 import {render} from './render.js';
 
 const bodyElement = document.querySelector('body');
