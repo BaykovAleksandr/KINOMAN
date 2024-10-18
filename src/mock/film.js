@@ -1,5 +1,6 @@
+import { getRandomValue } from '../utils.js';
+export { getRandomNumber } from '../utils.js';
 
-const getRandomValue = (items) => items[Math.floor(Math.random() * items.length)];
 const titles = [
   'Country On Him',
   'Raiders With The Carpet',
