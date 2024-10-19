@@ -1,7 +1,7 @@
 import { getRandomValue } from '../utils.js';
 import { getRandomNumber } from '../utils.js';
 import { getRandomFloat } from '../utils.js';
-import { humanizeTaskDueDate } from '../utils.js';
+import { humanizeFilmDueDate } from '../utils.js';
 
 const titles = [
   'Country On Him',
@@ -33,7 +33,7 @@ const generateFilm = () => ({
     'Morgan Freeman'
   ],
   release: {
-    date: humanizeTaskDueDate('2019-05-11T00:00:00.000Z'),
+    date: humanizeFilmDueDate('2019-05-11T00:00:00.000Z'),
     releaseCountry: 'Finland'
   },
   runtime: getRandomNumber(60, 181),
