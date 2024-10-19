@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 
 import HeaderProfileView from './view/header-profile-view.js';
 import FilterView from './view/filter-view.js';
