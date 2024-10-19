@@ -24,3 +24,4 @@ render(new FilterView(), siteMainElement);
 render(new FooterStatisticView(), siteFooterStatisticsElement);
 
 filmsPresenter.init(siteMainElement, filmsModel, commentsModel);
+

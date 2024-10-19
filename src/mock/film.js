@@ -17,13 +17,22 @@ const genres = ['kriminal', 'erotic', 'musicl', 'western', 'fantasy', 'action', 
 
 const descriptions = ['Oscar-winning film', 'A war drama about two young people', 'From the creators of timeless classic', 'Nu, Pogodi!', 'And', 'Alice in Wonderland', 'With the best fight scenes since Bruce Lee.'];
 
+const posters = [
+  'images/posters/made-for-each-other.png',
+  'images/posters/popeye-meets-sinbad.png',
+  'images/posters/sagebrush-trail.jpg',
+  'images/posters/santa-claus-conquers-the-martians.jpg',
+  'images/posters/the-dance-of-life.jpg',
+  'images/posters/the-great-flamarion.jpg',
+  'images/posters/the-man-with-the-golden-arm.jpg',
+];
 
 const generateFilm = () => ({
 
   title: getRandomValue(titles),
   alternativeTitle: 'Laziness Who Sold Themselves',
   totalRating: Math.round(getRandomFloat(0, 10),1),
-  poster: 'images/posters/blue-blazes.jpg',
+  poster: getRandomValue(posters),
   ageRating: getRandomNumber(0, 19),
   director: 'Tom Ford',
   writers: [
