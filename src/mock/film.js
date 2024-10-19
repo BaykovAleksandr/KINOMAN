@@ -40,7 +40,7 @@ const generateFilm = () => ({
   genre: [
     getRandomValue(genres)]
   ,
-  description: descriptions[getRandomNumber(0, descriptions.length)]
+  description: getRandomValue(descriptions)
 });
 
 const generateFilms = () => {
