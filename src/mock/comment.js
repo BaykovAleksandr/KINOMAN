@@ -16,7 +16,7 @@ const getCommentCount = (films) => films.reduce(
   (count, film) => count + film.comments.length, 0
 );
 
-const generateComments = (films) => {
+export const generateComments = (films) => {
   const commentCount = getCommentCount(films);
 
   return Array.from({length: commentCount}, (_value, index) => {
@@ -28,3 +28,4 @@ const generateComments = (films) => {
     };
   });
 };
+

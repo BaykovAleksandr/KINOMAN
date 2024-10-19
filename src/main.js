@@ -20,6 +20,9 @@ render(new FooterStatisticView(), siteFooterStatisticsElement);
 filmsPresenter.init(siteMainElement);
 
 import {generateFilms} from './mock/film';
+import {generateComments} from './mock/comment.js';
 const films = generateFilms();
-// eslint-disable-next-line no-console
+const comments = generateComments(films);
+
 console.log(films);
+console.log(comments);
