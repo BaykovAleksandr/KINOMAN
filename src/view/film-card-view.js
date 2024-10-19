@@ -14,13 +14,17 @@ const createFilmCardTemplate = () =>
   `;
 
 export default class FilmCardView {
+  constructor(film) {
+    this.film = film;
+  }
+
   getTemplate() {
-    return createFilmCardTemplate();
+    return createFilmCardTemplate(this.film);
   }
 
   getElement() {
     if (!this.element) {
-      this.element = createElement(this.getTemplate());
+      this.element = createElement(this.getTemplate(this.film));
     }
 
     return this.element;

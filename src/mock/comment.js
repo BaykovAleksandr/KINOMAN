@@ -33,4 +33,4 @@ const generateComments = (films) => {
   });
 };
 
-export { generateComments};
+export { getCommentCount, generateComments };

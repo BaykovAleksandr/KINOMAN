@@ -14,24 +14,12 @@ const siteMainElement = bodyElement.querySelector('.main');
 const siteFooterElement = bodyElement.querySelector('.footer');
 const siteFooterStatisticsElement = siteFooterElement.querySelector('.footer__statistics');
 
-//const filmsPresenter = new FilmsPresenter();
+const filmsModel = new FilmsModel();
+const commentsModel = new CommentsModel(filmsModel);
+const filmsPresenter = new FilmsPresenter();
 
 render(new HeaderProfileView(), siteHeaderElement);
 render(new FilterView(), siteMainElement);
 render(new FooterStatisticView(), siteFooterStatisticsElement);
 
-//filmsPresenter.init(siteMainElement);
-
-import {generateFilms} from './mock/film';
-import {generateComments} from './mock/comment.js';
-const films = generateFilms();
-const comments = generateComments(films);
-const filmsModel = new FilmsModel();
-const commentsModel = new CommentsModel(filmsModel);
-
-const filmsPresenter = new FilmsPresenter();
-
 filmsPresenter.init(siteMainElement, filmsModel, commentsModel);
-
-console.log(films);
-console.log(comments);
