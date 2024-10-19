@@ -69,4 +69,4 @@ const generateFilms = () => {
   });
 };
 
-export { generateFilms};
+export { generateFilms };
