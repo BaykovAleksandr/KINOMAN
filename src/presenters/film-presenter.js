@@ -32,14 +32,40 @@ export default class FilmsPresenter {
     render(this.#filmListComponent, this.#filmsComponent.getElement());
     render(this.#filmListContainerComponent, this.#filmListComponent.getElement());
 
-    for (let i = 0; i < this.films.length; i++) {
-      render(new FilmCardView(this.films[i]), this.filmListContainerComponent.getElement());
-    }
+    this.#films.forEach((film) => {
+      this.#renderFilm(film, this.#filmListContainerComponent);
+    });
 
-    render(this.filmButtonMoreComponent, this.filmListComponent.getElement());
+    render(this.#filmButtonMoreComponent, this.#filmListComponent.getElement());
 
-    const comments = [...this.commentsModel.get(this.films[0])];
+    //const comments = [...this.commentsModel.get(this.films[0])];
 
     //render(new FilmDetailsView(this.films[0], comments), this.container.parentElement);
   };
+
+  #renderFilm(film, container) {
+    const filmCardComponent = new FilmCardView(film);
+
+    const linkFilmCardElement = filmCardComponent.element.querySelector('a');
+
+    linkFilmCardElement.addEventListener('click', () => {
+      this.#addFilmDetailsComponent(film);
+      document.addEventListener('keydown', this.#onEscKeyDown);
+    });
+
+    render(filmCardComponent, container.element);
+  };
+
+  #onEscKeyDown = (evt) => {
+    if (evt.key === 'Escape' || evt.key === 'Esc') {
+      evt.preventDefault();
+      this.#removeFilmDetailsComponent();
+      document.removeEventListener('keydown', this.#onEscKeyDown);
+    }
+  };
+
+  
+
+
+
 }
