@@ -1,4 +1,4 @@
-import { getRandomValue, getRandomNumber,humanizeCommentDueDate } from '../utils';
+import { getRandomValue, humanizeCommentDueDate } from '../utils';
 
 const emotions = ['smile', 'sleeping', 'puke', 'angry'];
 
@@ -8,7 +8,6 @@ const fishComments = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. C
 
 const generateComment = () => (
   {
-    'id': getRandomNumber(0,100),
     'author': getRandomValue(authors),
     'comment': getRandomValue(fishComments),
     'date': humanizeCommentDueDate('2019-05-11T16:12:32.554Z'),
