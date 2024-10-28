@@ -34,6 +34,6 @@ export default class FilmsPresenter {
 
     const comments = [...this.commentsModel.get(this.films[0])];
 
-    render(new FilmDetailsView(this.films[0], comments), this.container.parentElement);
+    //render(new FilmDetailsView(this.films[0], comments), this.container.parentElement);
   };
 }
