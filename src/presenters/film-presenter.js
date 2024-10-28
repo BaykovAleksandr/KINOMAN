@@ -22,10 +22,11 @@ export default class FilmsPresenter {
 
   #films = [];
 
-  init = (container, filmsModel, commentsModel ) => {
+  init = (container, filmsModel, commentsModel) => {
     this.#container = container;
     this.#filmsModel = filmsModel;
     this.#commentsModel = commentsModel;
+
     this.#films = [...this.#filmsModel.get()];
 
     render(this.#sortComponent, this.#container);
@@ -36,11 +37,13 @@ export default class FilmsPresenter {
     this.#films.forEach((film) => {
       this.#renderFilm(film, this.#filmListContainerComponent);
     });
+
     render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
   };
 
   #renderFilm(film, container) {
     const filmCardComponent = new FilmCardView(film);
+
     const linkFilmCardElement = filmCardComponent.element.querySelector('a');
 
     linkFilmCardElement.addEventListener('click', () => {
@@ -84,5 +87,4 @@ export default class FilmsPresenter {
       document.removeEventListener('keydown', this.#onEscKeyDown);
     }
   };
-
 }

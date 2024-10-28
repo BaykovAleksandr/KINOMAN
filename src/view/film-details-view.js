@@ -35,7 +35,7 @@ const createFilmDetailsTemplate = ({filmInfo}, comments) =>
     </section>
  `;
 
- export default class FilmDetailsView {
+export default class FilmDetailsView {
   #element = null;
   #film = null;
   #comments = null;
