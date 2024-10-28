@@ -14,6 +14,7 @@ export default class FilmsPresenter {
   #filmListComponent = new FilmListView();
   #filmListContainerComponent = new FilmListContainerView();
   #filmButtonMoreComponent = new FilmButtonMoreView();
+  #filmDetailsComponent = null;
 
   #container = null;
   #filmsModel = null;
@@ -29,14 +30,14 @@ export default class FilmsPresenter {
 
     render(this.#sortComponent, this.#container);
     render(this.#filmsComponent, this.#container);
-    render(this.#filmListComponent, this.#filmsComponent.getElement());
-    render(this.#filmListContainerComponent, this.#filmListComponent.getElement());
+    render(this.#filmListComponent, this.#filmsComponent.element);
+    render(this.#filmListContainerComponent, this.#filmListComponent.element);
 
     this.#films.forEach((film) => {
       this.#renderFilm(film, this.#filmListContainerComponent);
     });
 
-    render(this.#filmButtonMoreComponent, this.#filmListComponent.getElement());
+    render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
 
     //const comments = [...this.commentsModel.get(this.films[0])];
 
@@ -54,6 +55,32 @@ export default class FilmsPresenter {
     });
 
     render(filmCardComponent, container.element);
+  }
+
+  #renderFilmDetails(film) {
+    const comments = [...this.#commentsModel.get(film)];
+
+    this.#filmDetailsComponent = new FilmDetailsView(film, comments);
+
+    const closeButtonFilmDetailsElement = this.#filmDetailsComponent.element.querySelector('.film-details__close-btn');
+
+    closeButtonFilmDetailsElement.addEventListener('click', () => {
+      this.#removeFilmDetailsComponent();
+      document.removeEventListener('keydown', this.#onEscKeyDown);
+    });
+
+    render(this.#filmDetailsComponent, this.#container.parentElement);
+  }
+
+  #addFilmDetailsComponent = (film) => {
+    this.#renderFilmDetails(film);
+    document.body.classList.add('hide-overflow');
+  };
+
+  #removeFilmDetailsComponent = () => {
+    this.#filmDetailsComponent.element.remove();
+    this.#filmDetailsComponent = null;
+    document.body.classList.remove('hide-overflow');
   };
 
   #onEscKeyDown = (evt) => {
@@ -63,9 +90,5 @@ export default class FilmsPresenter {
       document.removeEventListener('keydown', this.#onEscKeyDown);
     }
   };
-
-  
-
-
 
 }
