@@ -36,17 +36,11 @@ export default class FilmsPresenter {
     this.#films.forEach((film) => {
       this.#renderFilm(film, this.#filmListContainerComponent);
     });
-
     render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
-
-    //const comments = [...this.commentsModel.get(this.films[0])];
-
-    //render(new FilmDetailsView(this.films[0], comments), this.container.parentElement);
   };
 
   #renderFilm(film, container) {
     const filmCardComponent = new FilmCardView(film);
-
     const linkFilmCardElement = filmCardComponent.element.querySelector('a');
 
     linkFilmCardElement.addEventListener('click', () => {
