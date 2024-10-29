@@ -5,6 +5,7 @@ import FilmListContainerView from '../view/film-list-container-view.js';
 import FilmButtonMoreView from '../view/film-button-more-view.js';
 import FilmCardView from '../view/film-card-view.js';
 import FilmDetailsView from '../view/film-details-view.js';
+import FilmListEmptyView from '../view/film-list-empty-view.js';
 
 import {render} from '../render.js';
 
@@ -37,11 +38,16 @@ export default class FilmsPresenter {
   #renderedFilmCount  = FILM_COUNT_PER_STEP;
 
   #renderFilmBoard() {
+
+    if (this.#films.length === 0) {
+      render(new FilmListEmptyView(), this.#container);
+      return;
+    }
+
     render(this.#sortComponent, this.#container);
     render(this.#filmsComponent, this.#container);
     render(this.#filmListComponent, this.#filmsComponent.element);
     render(this.#filmListContainerComponent, this.#filmListComponent.element);
-
     this.#films
       .slice(0, Math.min(this.#films.length, FILM_COUNT_PER_STEP))
       .forEach((film) => this.#renderFilm(film, this.#filmListContainerComponent));
