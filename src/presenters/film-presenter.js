@@ -29,17 +29,22 @@ export default class FilmsPresenter {
 
     this.#films = [...this.#filmsModel.get()];
 
+    this.#renderFilmBoard();
+  };
+
+  #renderFilmBoard() {
     render(this.#sortComponent, this.#container);
     render(this.#filmsComponent, this.#container);
     render(this.#filmListComponent, this.#filmsComponent.element);
     render(this.#filmListContainerComponent, this.#filmListComponent.element);
 
-    this.#films.forEach((film) => {
-      this.#renderFilm(film, this.#filmListContainerComponent);
-    });
+    this.#films
+      .slice(0, Math.min(this.#films.length, 5))
+      .forEach((film) => this.#renderFilm(film, this.#filmListContainerComponent));
+  }
 
-    render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
-  };
+  //render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
+//};
 
   #renderFilm(film, container) {
     const filmCardComponent = new FilmCardView(film);
