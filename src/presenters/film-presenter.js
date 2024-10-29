@@ -45,10 +45,18 @@ export default class FilmsPresenter {
     this.#films
       .slice(0, Math.min(this.#films.length, FILM_COUNT_PER_STEP))
       .forEach((film) => this.#renderFilm(film, this.#filmListContainerComponent));
+
+    render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
+    this.#filmButtonMoreComponent.element.addEventListener('click', (evt) => this.#filmButtonMoreClickHandler(evt));
   }
 
-  //render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
-//};
+  #filmButtonMoreClickHandler(evt) {
+    this.#films.slice(this.#renderedFilmCount, this.#renderedFilmCount + FILM_COUNT_PER_STEP).forEach((film) => {
+      this.#renderFilm(film, this.#filmListContainerComponent);
+    });
+
+    this.#renderedFilmCount += FILM_COUNT_PER_STEP;
+  }
 
   #renderFilm(film, container) {
     const filmCardComponent = new FilmCardView(film);
