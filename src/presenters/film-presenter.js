@@ -45,9 +45,9 @@ export default class FilmsPresenter {
     this.#films
       .slice(0, Math.min(this.#films.length, FILM_COUNT_PER_STEP))
       .forEach((film) => this.#renderFilm(film, this.#filmListContainerComponent));
-
-    render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
-    this.#filmButtonMoreComponent.element.addEventListener('click', (evt) => this.#filmButtonMoreClickHandler(evt));
+    if (this.#films.length > FILM_COUNT_PER_STEP) {render(this.#filmButtonMoreComponent, this.#filmListComponent.element);
+      this.#filmButtonMoreComponent.element.addEventListener('click', (evt) => this.#filmButtonMoreClickHandler(evt));
+    }
   }
 
   #filmButtonMoreClickHandler(evt) {
@@ -56,6 +56,10 @@ export default class FilmsPresenter {
     });
 
     this.#renderedFilmCount += FILM_COUNT_PER_STEP;
+    if (this.#renderedFilmCount >= this.#films.length) {
+      this.#filmButtonMoreComponent.element.remove();
+      this.#filmButtonMoreComponent.removeElement();
+    }
   }
 
   #renderFilm(film, container) {
