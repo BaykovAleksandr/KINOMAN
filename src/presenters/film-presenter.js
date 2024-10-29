@@ -50,7 +50,7 @@ export default class FilmsPresenter {
     }
   }
 
-  #filmButtonMoreClickHandler(evt) {
+  #filmButtonMoreClickHandler() {
     this.#films.slice(this.#renderedFilmCount, this.#renderedFilmCount + FILM_COUNT_PER_STEP).forEach((film) => {
       this.#renderFilm(film, this.#filmListContainerComponent);
     });
