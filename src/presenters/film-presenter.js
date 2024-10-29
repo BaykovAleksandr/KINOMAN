@@ -8,6 +8,8 @@ import FilmDetailsView from '../view/film-details-view.js';
 
 import {render} from '../render.js';
 
+const FILM_COUNT_PER_STEP = 5;
+
 export default class FilmsPresenter {
   #sortComponent = new SortView();
   #filmsComponent = new FilmsView();
@@ -32,6 +34,8 @@ export default class FilmsPresenter {
     this.#renderFilmBoard();
   };
 
+  #renderedFilmCount  = FILM_COUNT_PER_STEP;
+
   #renderFilmBoard() {
     render(this.#sortComponent, this.#container);
     render(this.#filmsComponent, this.#container);
@@ -39,7 +43,7 @@ export default class FilmsPresenter {
     render(this.#filmListContainerComponent, this.#filmListComponent.element);
 
     this.#films
-      .slice(0, Math.min(this.#films.length, 5))
+      .slice(0, Math.min(this.#films.length, FILM_COUNT_PER_STEP))
       .forEach((film) => this.#renderFilm(film, this.#filmListContainerComponent));
   }
 
