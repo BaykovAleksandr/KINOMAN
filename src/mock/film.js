@@ -1,66 +1,49 @@
-import { getRandomValue } from '../utils.js';
-import { getRandomNumber } from '../utils.js';
-import { getRandomFloat } from '../utils.js';
-import { humanizeFilmDueDate } from '../utils.js';
+import {getRandomInteger, getRandomValue} from '../utils/common.js';
+import {FILM_COUNT} from '../const.js';
+import {
+  NAME_COUNT, MAX_COMMENTS_ON_FILM, GenreCount, Rating,
+  AgeRating, Runtime, YearsDuration, names, surnames,
+  titles, posters, genres, description, countries,
+} from './const.js';
 
-const titles = [
-  'Country On Him',
-  'Raiders With The Carpet',
-  'Guest Who Sold The Darkness',
-  'Made for Each Other',
-  'Popuye Meet Syndbad',
-  'Sugebbrash Trail',
-  'The Man With The Golden Arm'
-];
+const getDate = () => {
+  const date = new Date();
 
-const genres = ['kriminal', 'erotic', 'musicl', 'western', 'fantasy', 'action', 'comedy', 'advanture'];
+  date.setFullYear(
+    date.getFullYear() - getRandomInteger(YearsDuration.MIN, YearsDuration.MAX)
+  );
 
-const descriptions = ['Oscar-winning film', 'A war drama about two young people', 'From the creators of timeless classic', 'Nu, Pogodi!', 'And', 'Alice in Wonderland', 'With the best fight scenes since Bruce Lee.'];
-
-const posters = [
-  'images/posters/made-for-each-other.png',
-  'images/posters/popeye-meets-sinbad.png',
-  'images/posters/sagebrush-trail.jpg',
-  'images/posters/santa-claus-conquers-the-martians.jpg',
-  'images/posters/the-dance-of-life.jpg',
-  'images/posters/the-great-flamarion.jpg',
-  'images/posters/the-man-with-the-golden-arm.jpg',
-];
+  return date.toISOString();
+};
 
 const generateFilm = () => ({
-
   title: getRandomValue(titles),
-  alternativeTitle: 'Laziness Who Sold Themselves',
-  totalRating: Math.round(getRandomFloat(0, 10),1),
+  alternativeTitle: getRandomValue(titles),
+  totalRating: getRandomInteger(Rating.MIN, Rating.MAX),
   poster: getRandomValue(posters),
-  ageRating: getRandomNumber(0, 19),
-  director: 'Tom Ford',
-  writers: [
-    'Takeshi Kitano'
-  ],
-  actors: [
-    'Morgan Freeman'
-  ],
+  ageRating: getRandomInteger(AgeRating.MIN, AgeRating.MAX),
+  director: `${getRandomValue(names)} ${getRandomValue(surnames)}`,
+  writers: Array.from({length: NAME_COUNT}, () => `${getRandomValue(names)} ${getRandomValue(surnames)}`),
+  actors: Array.from({length: NAME_COUNT}, () => `${getRandomValue(names)} ${getRandomValue(surnames)}`),
   release: {
-    date: humanizeFilmDueDate('2019-05-11T00:00:00.000Z'),
-    releaseCountry: 'Finland'
+    date: getDate(),
+    releaseСountry: getRandomValue(countries)
   },
-  runtime: getRandomNumber(60, 181),
-  genre: [
-    getRandomValue(genres)]
-  ,
-  description: getRandomValue(descriptions)
+  runtime: getRandomInteger(Runtime.MIN, Runtime.MAX),
+  genre:  Array.from({length: getRandomInteger(GenreCount.MIN, GenreCount.MAX)}, () => getRandomValue(genres)),
+  description
 });
 
 const generateFilms = () => {
-  const films = Array.from({length: titles.length}, generateFilm);
+  const films = Array.from({length: FILM_COUNT}, generateFilm);
 
   let totalCommentsCount = 0;
 
   return films.map((film, index) => {
-    const hasComments = getRandomNumber(0, 1);
+    const hasComments = getRandomInteger(0, 1);
+
     const filmCommentsCount = (hasComments)
-      ? getRandomNumber(1, 30)
+      ? getRandomInteger(1, MAX_COMMENTS_ON_FILM)
       : 0;
 
     totalCommentsCount += filmCommentsCount;
@@ -68,8 +51,7 @@ const generateFilms = () => {
     return {
       id: String(index + 1),
       comments: (hasComments)
-        ? Array.from(
-          {length: filmCommentsCount},
+        ? Array.from({length: filmCommentsCount},
           (_value, commentIndex) => String(totalCommentsCount - commentIndex)
         )
         : [],
@@ -78,4 +60,4 @@ const generateFilms = () => {
   });
 };
 
-export { generateFilms };
+export {generateFilms};

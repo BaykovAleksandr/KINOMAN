@@ -8,7 +8,7 @@ import FilmCardView from '../view/film-card-view.js';
 import FilmDetailsView from '../view/film-details-view.js';
 
 import {render, remove} from '../framework/render.js';
-const FILM_COUNT_PER_STEP = 5;
+import {FILM_COUNT_PER_STEP} from '../const.js';
 
 export default class FilmsPresenter {
   #sortComponent = new SortView();
