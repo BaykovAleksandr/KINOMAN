@@ -1,4 +1,4 @@
-const emotions = ['smile', 'sleeping', 'puke', 'angry'];
+import {EMOTIONS} from '../const.js';
 
 const createEmotionItem = (emotionItem) =>
   `
@@ -29,7 +29,7 @@ export const createFilmDetailsFormTemplate = () =>
       </label>
 
       <div class="film-details__emoji-list">
-        ${emotions.map(createEmotionItem).join('')}
+        ${EMOTIONS.map(createEmotionItem).join('')}
       </div>
     </form>
   `;
