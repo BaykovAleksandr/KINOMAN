@@ -1,11 +1,13 @@
+import dayjs from 'dayjs';
+
 const formatStringToDateWithTime = (date) =>
   new Date(date).toLocaleString('en-GB');
 
 const formatStringToDate = (date) =>
-  new Date(date).toLocaleString('en-GB', {day: '2-digit', month: 'long', year: 'numeric'});
+  dayjs(date).format('DD MMMM YYYY');
 
 const formatStringToYear = (date) =>
-  new Date(date).getFullYear();
+  dayjs(date).format('YYYY');
 
 const formatMinutesToTime = (minutes) => {
   const MINUTES_PER_HOUR = 60;
