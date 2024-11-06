@@ -10,11 +10,7 @@ const formatStringToYear = (date) =>
   dayjs(date).format('YYYY');
 
 const formatMinutesToTime = (minutes) => {
-  const MINUTES_PER_HOUR = 60;
-
-  return (minutes < MINUTES_PER_HOUR)
-    ? `${minutes}m`
-    : `${Math.floor(minutes / MINUTES_PER_HOUR)}h ${minutes % MINUTES_PER_HOUR}m`;
+  dayjs.duration(minutes, 'minutes').format('H[h] mm[m]');
 };
 
 const sortFilmsByDate = (filmA, filmB) =>
