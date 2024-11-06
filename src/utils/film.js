@@ -1,4 +1,16 @@
 import dayjs from 'dayjs';
+import duration from 'dayjs/plugin/duration';
+import relativeTime from 'dayjs/plugin/relativeTime';
+
+
+dayjs.extend(duration);
+dayjs.extend(relativeTime);
+
+const humanizeDate = (date) => {
+  const timeDiff = dayjs(date).diff(dayjs());
+  return dayjs.duration(timeDiff).humanize(true);
+}
+
 
 const formatStringToDateWithTime = (date) =>
   new Date(date).toLocaleString('en-GB');
@@ -14,7 +26,7 @@ const formatMinutesToTime = (minutes) => {
 };
 
 const sortFilmsByDate = (filmA, filmB) =>
-  new Date(filmB.filmInfo.release.date) - new Date(filmA.filmInfo.release.date);
+  dayjs(filmB.filmInfo.release.date).diff(dayjs(filmA.filmInfo.release.date));
 
 const sortFilmsByRating = (filmA, filmB) =>
   filmB.filmInfo.totalRating - filmA.filmInfo.totalRating;
