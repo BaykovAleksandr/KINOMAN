@@ -2,7 +2,6 @@ import dayjs from 'dayjs';
 import duration from 'dayjs/plugin/duration';
 import relativeTime from 'dayjs/plugin/relativeTime';
 
-
 dayjs.extend(duration);
 dayjs.extend(relativeTime);
 
@@ -20,7 +19,6 @@ const formatStringToYear = (date) =>
 const formatMinutesToTime = (minutes) =>
   dayjs.duration(minutes, 'minutes').format('H[h] mm[m]');
 
-
 const sortFilmsByDate = (filmA, filmB) =>
   dayjs(filmB.filmInfo.release.date).diff(dayjs(filmA.filmInfo.release.date));
 
@@ -28,10 +26,10 @@ const sortFilmsByRating = (filmA, filmB) =>
   filmB.filmInfo.totalRating - filmA.filmInfo.totalRating;
 
 export {
+  humanizeDate,
   formatStringToDate,
   formatStringToYear,
   formatMinutesToTime,
   sortFilmsByDate,
-  sortFilmsByRating,
-  humanizeDate
+  sortFilmsByRating
 };
