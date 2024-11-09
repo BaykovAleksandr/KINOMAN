@@ -1,4 +1,5 @@
 import Observable from '../framework/observable';
+import {UpdateType} from '../const';
 
 export default class CommentsModel extends Observable {
   #comments = [];
@@ -27,6 +28,8 @@ export default class CommentsModel extends Observable {
         update: response.movie,
         isAdapted: false
       });
+
+      this._notify(UpdateType.EXTRA);
     } catch {
       throw new Error('Can\'t add comment');
     }
@@ -57,6 +60,8 @@ export default class CommentsModel extends Observable {
         update: updateFilm,
         isAdapted: true
       });
+
+      this._notify(UpdateType.EXTRA);
     } catch {
       throw new Error('Can\'t delete comment');
     }
